@@ -1,6 +1,6 @@
-# Desafio de Alarmes - PHP
+# 🚨 Desafio de Alarmes - PHP
 
-Este projeto é um sistema simples de cadastro e manipulação de alarmes relacionados a equipamentos. Desenvolvido em **PHP** com **Bootstrap** e **MySQL**, executado via **Docker**.
+Sistema completo para cadastro e gerenciamento de equipamentos e alarmes, com visualização de atuações e simulação de envio de alertas. Desenvolvido em **PHP**, **MySQL**, **Bootstrap**, executado via **Docker**.
 
 ---
 
@@ -30,7 +30,7 @@ cd desafio-alarmes-php
 docker compose up --build
 ```
 
-3. Acesse o sistema:
+3. Acesse o sistema no navegador:
 
 ```bash
 http://localhost:8000
@@ -41,7 +41,7 @@ http://localhost:8000
 ## 🛠️ Banco de Dados
 
 - O banco é automaticamente inicializado com as tabelas e estrutura do arquivo `database.sql`.
-- Se desejar resetar o banco, execute:
+- Para resetar o banco e os dados:
 
 ```bash
 docker compose down -v
@@ -52,32 +52,43 @@ docker compose down -v
 ## 📂 Estrutura do Projeto
 
 ```bash
-equipamentos/        # CRUD completo de equipamentos
-alarmes/             # CRUD completo de alarmes + ativação/desativação com simulação de envio de e-mail
-atuacoes/            # Visualização de atuações com filtros, ordenações e top 3
-includes/            # Conexão com o banco (db.php)
-logs/                # Armazena simulações de envio de e-mail para alarmes urgentes
+index.php             # Página inicial de navegação
+equipamentos/         # CRUD completo de equipamentos
+alarmes/              # CRUD de alarmes + ativação/desativação + log de urgência
+atuacoes/             # Visualização de atuações com filtros, ordenações e top 3
+includes/             # Arquivo de conexão com banco (db.php)
+logs/                 # Simulação de envio de e-mail (emails.log)
 ```
 
 ---
 
 ## 🧠 Funcionalidades
 
-- Cadastro e gerenciamento de **equipamentos**
-- Cadastro e gerenciamento de **alarmes** vinculados a equipamentos
-- Ativação e desativação de alarmes com:
-  - Registro de data de entrada/saída
-  - Simulação de envio de e-mail para alarmes **urgentes**
-- Página com **visualização de atuações**:
+- 📋 Cadastro e gerenciamento de **equipamentos**
+- 🚨 Cadastro e gerenciamento de **alarmes** vinculados aos equipamentos
+- 🔁 Ativação e desativação de alarmes com:
+  - Registro de **entrada e saída** nas atuações
+  - Simulação de envio de e-mail para alarmes **Urgentes**
+- 📊 Página de **atuações** com:
   - Filtro por descrição
   - Ordenação por colunas
-  - Top 3 alarmes mais atuados
+  - Exibição do **Top 3 alarmes mais atuados**
 
 ---
 
 ## 📧 Simulação de envio de e-mail
 
-- Ao ativar um alarme com classificação **Urgente**, uma linha é adicionada ao arquivo `logs/emails.log`
+- Toda vez que um alarme **Urgente** for ativado, é registrada uma entrada no arquivo:
+
+```
+logs/emails.log
+```
+
+Exemplo:
+
+```
+[URGENTE] Alarme ativado: Transformador X
+```
 
 ---
 
