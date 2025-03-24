@@ -1,0 +1,22 @@
+# Arquivos de log
+logs/
+*.log
+
+# Volumes e dados temporários do Docker
+dbdata/
+docker/mysql-init/
+
+# Arquivos do sistema
+.DS_Store
+Thumbs.db
+
+# Cache do VSCode
+.vscode/
+
+# Arquivos ocultos de backup/swap
+*~
+*.swp
+*.swo
+
+# Arquivos do sistema de arquivos
+.idea/
